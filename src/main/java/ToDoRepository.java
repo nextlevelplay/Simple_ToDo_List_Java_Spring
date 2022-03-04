@@ -6,7 +6,7 @@ public interface ToDoRepository {
 
     ToDoEntity createToDo(ToDoEntity entity);
     List<ToDoEntity> showAllToDo();
-    void upgradeToDo();
+    void updateToDo();
     void removeToDo(Integer id);
 
 }
