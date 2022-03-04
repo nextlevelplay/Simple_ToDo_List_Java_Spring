@@ -27,9 +27,14 @@ public class ToDoListRepository implements ToDoRepository{
 
     // Update ToDo
     @Override
-    public void updateToDo() {
-
-
+    public ToDoEntity updateToDo(ToDoEntity entity, String newName, String newDescription) {
+        for (ToDoEntity value : repository) {
+            if (value != null && entity.getId().equals(value.getId())) {
+                entity.setName(newName);
+                entity.setDescription(newDescription);
+            }
+        }
+        return entity;
     }
 
     // Remove ToDo
