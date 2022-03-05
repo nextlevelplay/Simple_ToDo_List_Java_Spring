@@ -11,7 +11,7 @@ public class Application {
         System.out.println("Try to create");
         var todo = new ToDoEntity();
         todo.setName("Dota2");
-        todo.setDescription("play all night!");
+        todo.setDescription("get 6000 mmr");
 
         repo.createToDo(todo);
 

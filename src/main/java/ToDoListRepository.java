@@ -39,7 +39,7 @@ public class ToDoListRepository implements ToDoRepository{
 
     // Remove ToDo
     @Override
-    public void removeToDo(Integer id) {
-        repository.removeIf(entity -> entity.getId().equals(id));
+    public boolean removeToDo(Integer id) {
+        return repository.removeIf(entity -> entity.getId().equals(id));
     }
 }
