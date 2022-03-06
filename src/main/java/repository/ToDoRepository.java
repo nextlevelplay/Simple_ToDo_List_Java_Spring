@@ -1,3 +1,5 @@
+package repository;
+
 import domain.ToDoEntity;
 
 import java.util.List;
@@ -8,5 +10,6 @@ public interface ToDoRepository {
     List<ToDoEntity> showAllToDo();
     ToDoEntity updateToDo(ToDoEntity entity, String newName, String newDescription);
     boolean removeToDo(Integer id);
+    ToDoEntity findById(Integer id);
 
 }

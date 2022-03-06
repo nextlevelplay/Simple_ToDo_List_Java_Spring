@@ -1,9 +1,11 @@
+package repository;
+
 import domain.ToDoEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToDoListRepository implements ToDoRepository{
+public class ToDoListRepository implements ToDoRepository {
 
     private final List<ToDoEntity> repository = new ArrayList<>();
     private Integer idSequence = 1;
@@ -24,6 +26,18 @@ public class ToDoListRepository implements ToDoRepository{
         return repository;
     }
 
+    @Override
+    public ToDoEntity findById(Integer id) {
+        for (ToDoEntity value : repository) {
+            if (value != null && id.equals(value.getId())) {
+                System.out.println("******************************");
+                System.out.println("Task successfully update!");
+                return value;
+            }
+        }
+        return null;
+    }
+
 
     // Update ToDo
     @Override
@@ -42,4 +56,5 @@ public class ToDoListRepository implements ToDoRepository{
     public boolean removeToDo(Integer id) {
         return repository.removeIf(entity -> entity.getId().equals(id));
     }
+
 }
