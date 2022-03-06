@@ -4,8 +4,10 @@ import core.CreateTaskService;
 import core.RemoveTaskService;
 import core.ShowAllTaskService;
 import core.UpdateTaskService;
+import core.validation.*;
 import repository.ToDoListRepository;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu implements UIAction {
@@ -13,8 +15,20 @@ public class MainMenu implements UIAction {
     // Repository
     ToDoListRepository repository = new ToDoListRepository();
 
+    // Validation Rules
+    List<ValidationRule> validationRules = List.of(
+            new TaskNameNullValidationRule(),
+            new TaskNameMinLengthValidationRule(),
+            new TaskNameMaxLengthValidationRule(),
+            new TaskDescriptionNullValidationRule(),
+            new TaskDescriptionMinLengthValidationRule(),
+            new TaskDescriptionMaxLengthValidationRule()
+    );
+
+
     // Service Dependency
-    CreateTaskService createTaskService = new CreateTaskService(repository);
+    ValidationService validationService = new ValidationService(validationRules);
+    CreateTaskService createTaskService = new CreateTaskService(repository,validationService);
     ShowAllTaskService showAllTaskService = new ShowAllTaskService(repository);
     RemoveTaskService removeTaskService = new RemoveTaskService(repository);
     UpdateTaskService updateTaskService = new UpdateTaskService(repository);
@@ -33,6 +47,7 @@ public class MainMenu implements UIAction {
 
 
         while (true) {
+            try {
             System.out.println("\033[H\033[2J");
             System.out.flush();
 
@@ -51,6 +66,9 @@ public class MainMenu implements UIAction {
                 break;
             } else {
                 executeUIAction(selector);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             }
         }
     }

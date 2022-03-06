@@ -2,6 +2,7 @@ package ui;
 
 import core.CreateTaskService;
 import domain.ToDoEntity;
+import dto.CreateTaskRequest;
 
 import java.util.Scanner;
 
@@ -21,16 +22,18 @@ public class CreateTaskUIAction implements UIAction{
 
         // Create scanner
         var scanner = new Scanner(System.in);
-        var entity = new ToDoEntity();
+        var request = new CreateTaskRequest();
 
         // Asking user some data
         System.out.println("******************************");
         System.out.print("Please enter name of Task: ");
-        entity.setName(scanner.nextLine());
+        request.setName(scanner.nextLine());
         System.out.print("Please enter description: ");
-        entity.setDescription(scanner.nextLine());
+        request.setDescription(scanner.nextLine());
 
         // Use Service to create Task
-        createTaskService.createToDo(entity);
+        var response = createTaskService.createToDo(request);
+        System.out.println("******************************");
+        System.out.println("Received response: " + response);
     }
 }
