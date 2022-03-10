@@ -1,6 +1,6 @@
-import domain.ToDoEntity;
+import com.petproject.todolist.domain.ToDoEntity;
 import org.junit.jupiter.api.Test;
-import repository.ToDoListRepository;
+import com.petproject.todolist.repository.ToDoListRepository;
 
 import java.util.List;
 
