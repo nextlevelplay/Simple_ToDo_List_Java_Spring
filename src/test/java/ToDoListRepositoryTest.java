@@ -1,6 +1,6 @@
-import domain.ToDoEntity;
+import com.petproject.todolist.domain.ToDoEntity;
 import org.junit.jupiter.api.Test;
-import repository.ToDoListRepository;
+import com.petproject.todolist.repository.ToDoListRepository;
 
 import java.util.List;
 
@@ -57,7 +57,7 @@ class ToDoListRepositoryTest {
         updatedEntity.setDescription("For the Horde!");
         // Checking
         var expectedResult = updatedEntity;
-        var actualResult = repository.updateToDo(entity,updateName,updateDescription);
+        var actualResult = repository.updateToDo(entity);
         assertEquals(expectedResult,actualResult);
     }
 
