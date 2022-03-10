@@ -1,25 +1,19 @@
 package ui;
 
 import core.FindByIdTaskService;
-import core.RemoveTaskService;
 import core.ShowAllTaskService;
 import core.UpdateTaskService;
-import repository.ToDoRepository;
 
 import java.util.Scanner;
 
 public class UpdateTaskUIAction implements UIAction {
 
-    //FIX THIS DEPENDENCY WITH SERVICE!!!
-    private ToDoRepository repository;
-
     private ShowAllTaskService showAllTaskService;
     private UpdateTaskService updateTaskService;
     private FindByIdTaskService findByIdTaskService;
 
-    public UpdateTaskUIAction(ToDoRepository repository, ShowAllTaskService showAllTaskService,
+    public UpdateTaskUIAction(ShowAllTaskService showAllTaskService,
                               UpdateTaskService updateTaskService, FindByIdTaskService findByIdTaskService) {
-        this.repository = repository;
         this.showAllTaskService = showAllTaskService;
         this.updateTaskService = updateTaskService;
         this.findByIdTaskService = findByIdTaskService;

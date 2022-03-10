@@ -35,7 +35,7 @@ public class MainMenu implements UIAction {
     CreateTaskUIAction createTaskUIAction = new CreateTaskUIAction(createTaskService);
     ShowAllTaskUIAction showAllTaskUIAction = new ShowAllTaskUIAction(showAllTaskService);
     RemoveTaskUIAction removeTaskUIAction = new RemoveTaskUIAction(removeTaskService,showAllTaskService);
-    UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(repository,showAllTaskService,
+    UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(showAllTaskService,
             updateTaskService,findByIdTaskService);
 
 
