@@ -8,7 +8,7 @@ public interface ToDoRepository {
 
     ToDoEntity createToDo(ToDoEntity entity);
     List<ToDoEntity> showAllToDo();
-    ToDoEntity updateToDo(ToDoEntity entity, String newName, String newDescription);
+    ToDoEntity updateToDo(ToDoEntity entity);
     boolean removeToDo(Integer id);
     ToDoEntity findById(Integer id);
 

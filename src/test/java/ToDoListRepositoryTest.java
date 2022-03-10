@@ -57,7 +57,7 @@ class ToDoListRepositoryTest {
         updatedEntity.setDescription("For the Horde!");
         // Checking
         var expectedResult = updatedEntity;
-        var actualResult = repository.updateToDo(entity,updateName,updateDescription);
+        var actualResult = repository.updateToDo(entity);
         assertEquals(expectedResult,actualResult);
     }
 

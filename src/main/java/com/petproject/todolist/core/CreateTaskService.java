@@ -42,7 +42,7 @@ public class CreateTaskService {
     }
 
     private ToDoEntity convert(CreateTaskRequest request){
-        ToDoEntity entity = new ToDoEntity();
+        var entity = new ToDoEntity();
         entity.setName(request.getName());
         entity.setDescription(request.getDescription());
         return entity;

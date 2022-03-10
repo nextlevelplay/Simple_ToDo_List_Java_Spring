@@ -38,14 +38,7 @@ public class RemoveTaskUIAction implements UIAction {
         var id = Integer.parseInt(scanner.nextLine());
 
         // Use Service to remove the Task
-        var result = removeTaskService.removeToDo(id);
-        if (result == true){
-            System.out.println("******************************");
-            System.out.println("Task removed!");
-        } else {
-            System.out.println("******************************");
-            System.out.println("Wrong ID number!");
-        }
+        removeTaskService.removeToDo(id);
 
     }
 }

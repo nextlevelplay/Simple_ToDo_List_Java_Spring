@@ -12,7 +12,14 @@ public class RemoveTaskService {
         this.repository = repository;
     }
 
-    public boolean removeToDo(Integer id){
-        return repository.removeToDo(id);
+    public void removeToDo(Integer id){
+        var result = repository.removeToDo(id);
+        if (result){
+            System.out.println("******************************");
+            System.out.println("Sending response: Task removed!");
+        } else {
+            System.out.println("******************************");
+            System.out.println("Sending response: Wrong ID number!");
+        }
     }
 }

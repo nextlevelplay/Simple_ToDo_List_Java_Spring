@@ -3,6 +3,7 @@ package com.petproject.todolist.ui;
 import com.petproject.todolist.core.FindByIdTaskService;
 import com.petproject.todolist.core.ShowAllTaskService;
 import com.petproject.todolist.core.UpdateTaskService;
+import com.petproject.todolist.dto.UpdateTaskRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -49,9 +50,12 @@ public class UpdateTaskUIAction implements UIAction {
         System.out.print("Type new description: ");
         var newDescription = scanner.nextLine();
 
+        var request = new UpdateTaskRequest(id,newName,newDescription);
+        System.out.println("******************************");
+        System.out.println("Received request: " + request);
 
         // Use Service to update the Task
-        var response = updateTaskService.updateToDo(entity,newName,newDescription);
+        var response = updateTaskService.updateToDo(request);
         System.out.println("******************************");
         System.out.println("Received response: " + response);
     }

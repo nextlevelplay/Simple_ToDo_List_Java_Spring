@@ -27,7 +27,7 @@ public class MainMenu implements UIAction {
 
     // Service Dependency
     ValidationService validationService = new ValidationService(validationRules);
-    CreateTaskService createTaskService = new CreateTaskService(repository,validationService);
+    CreateTaskService createTaskService = new CreateTaskService(repository, validationService);
     ShowAllTaskService showAllTaskService = new ShowAllTaskService(repository);
     RemoveTaskService removeTaskService = new RemoveTaskService(repository);
     UpdateTaskService updateTaskService = new UpdateTaskService(repository);
@@ -36,9 +36,9 @@ public class MainMenu implements UIAction {
     // UI Dependency
     CreateTaskUIAction createTaskUIAction = new CreateTaskUIAction(createTaskService);
     ShowAllTaskUIAction showAllTaskUIAction = new ShowAllTaskUIAction(showAllTaskService);
-    RemoveTaskUIAction removeTaskUIAction = new RemoveTaskUIAction(removeTaskService,showAllTaskService);
+    RemoveTaskUIAction removeTaskUIAction = new RemoveTaskUIAction(removeTaskService, showAllTaskService);
     UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(showAllTaskService,
-            updateTaskService,findByIdTaskService);
+            updateTaskService, findByIdTaskService);
 
 
     @Override
@@ -49,27 +49,38 @@ public class MainMenu implements UIAction {
 
         while (true) {
             try {
-            System.out.println("\033[H\033[2J");
-            System.out.flush();
+                System.out.println("       █████                                    ███████████                   █████         █████        ███           █████   \n" +
+                        "      ░░███                                    ░█░░░███░░░█                  ░░███         ░░███        ░░░           ░░███    \n" +
+                        "       ░███   ██████   █████ █████  ██████     ░   ░███  ░   ██████    █████  ░███ █████    ░███        ████   █████  ███████  \n" +
+                        "       ░███  ░░░░░███ ░░███ ░░███  ░░░░░███        ░███     ░░░░░███  ███░░   ░███░░███     ░███       ░░███  ███░░  ░░░███░   \n" +
+                        "       ░███   ███████  ░███  ░███   ███████        ░███      ███████ ░░█████  ░██████░      ░███        ░███ ░░█████   ░███    \n" +
+                        " ███   ░███  ███░░███  ░░███ ███   ███░░███        ░███     ███░░███  ░░░░███ ░███░░███     ░███      █ ░███  ░░░░███  ░███ ███\n" +
+                        "░░████████  ░░████████  ░░█████   ░░████████       █████   ░░████████ ██████  ████ █████    ███████████ █████ ██████   ░░█████ \n" +
+                        " ░░░░░░░░    ░░░░░░░░    ░░░░░     ░░░░░░░░       ░░░░░     ░░░░░░░░ ░░░░░░  ░░░░ ░░░░░    ░░░░░░░░░░░ ░░░░░ ░░░░░░     ░░░░░  \n" +
+                        "                                                                                                                               \n" +
+                        "                                                    Console Task manager Beta 1.0                                              \n" +
+                        "                                                                                                                               ");
+                System.out.println("\033[H\033[2J");
+                System.out.flush();
 
-            System.out.println("1) Create Task.");
-            System.out.println("2) Update Task.");
-            System.out.println("3) Show all Tasks.");
-            System.out.println("4) Remove the Task.");
-            System.out.println("0) Exit.");
-            System.out.print("Please make a choice: ");
+                System.out.println("1) Create Task.");
+                System.out.println("2) Update Task.");
+                System.out.println("3) Show all Tasks.");
+                System.out.println("4) Remove the Task.");
+                System.out.println("0) Exit.");
+                System.out.print("Please make a choice: ");
 
-            int selector = Integer.parseInt(scanner.nextLine());
+                int selector = Integer.parseInt(scanner.nextLine());
 
-            if (selector == 0) {
-                System.out.println("**************************************");
-                System.out.println("Have a nice day! Comeback later!");
-                break;
-            } else {
-                executeUIAction(selector);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+                if (selector == 0) {
+                    System.out.println("**************************************");
+                    System.out.println("Have a nice day! Comeback later!");
+                    break;
+                } else {
+                    executeUIAction(selector);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
