@@ -2,7 +2,7 @@ package ui;
 
 import core.ShowAllTaskService;
 
-public class ShowAllTaskUIAction implements UIAction{
+public class ShowAllTaskUIAction implements UIAction {
 
     private ShowAllTaskService showAllTaskService;
 
@@ -18,8 +18,10 @@ public class ShowAllTaskUIAction implements UIAction{
 
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
-        showAllTaskService.showAllToDo().forEach(System.out::println);
+        var response = showAllTaskService.showAllToDo();
         System.out.println("******************************");
+        System.out.println("Received response: " + response);
+        System.out.println("______________________________");
 
 
     }

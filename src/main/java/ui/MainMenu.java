@@ -1,9 +1,6 @@
 package ui;
 
-import core.CreateTaskService;
-import core.RemoveTaskService;
-import core.ShowAllTaskService;
-import core.UpdateTaskService;
+import core.*;
 import core.validation.*;
 import repository.ToDoListRepository;
 
@@ -32,12 +29,14 @@ public class MainMenu implements UIAction {
     ShowAllTaskService showAllTaskService = new ShowAllTaskService(repository);
     RemoveTaskService removeTaskService = new RemoveTaskService(repository);
     UpdateTaskService updateTaskService = new UpdateTaskService(repository);
+    FindByIdTaskService findByIdTaskService = new FindByIdTaskService(repository);
 
     // UI Dependency
     CreateTaskUIAction createTaskUIAction = new CreateTaskUIAction(createTaskService);
     ShowAllTaskUIAction showAllTaskUIAction = new ShowAllTaskUIAction(showAllTaskService);
     RemoveTaskUIAction removeTaskUIAction = new RemoveTaskUIAction(removeTaskService,showAllTaskService);
-    UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(repository,showAllTaskService,updateTaskService);
+    UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(repository,showAllTaskService,
+            updateTaskService,findByIdTaskService);
 
 
     @Override

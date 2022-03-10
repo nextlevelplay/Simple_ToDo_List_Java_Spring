@@ -1,5 +1,6 @@
 package ui;
 
+import core.FindByIdTaskService;
 import core.RemoveTaskService;
 import core.ShowAllTaskService;
 import core.UpdateTaskService;
@@ -14,11 +15,14 @@ public class UpdateTaskUIAction implements UIAction {
 
     private ShowAllTaskService showAllTaskService;
     private UpdateTaskService updateTaskService;
+    private FindByIdTaskService findByIdTaskService;
 
-    public UpdateTaskUIAction(ToDoRepository repository, ShowAllTaskService showAllTaskService, UpdateTaskService updateTaskService) {
+    public UpdateTaskUIAction(ToDoRepository repository, ShowAllTaskService showAllTaskService,
+                              UpdateTaskService updateTaskService, FindByIdTaskService findByIdTaskService) {
         this.repository = repository;
         this.showAllTaskService = showAllTaskService;
         this.updateTaskService = updateTaskService;
+        this.findByIdTaskService = findByIdTaskService;
     }
 
     @Override
@@ -29,8 +33,10 @@ public class UpdateTaskUIAction implements UIAction {
 
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
-        showAllTaskService.showAllToDo().forEach(System.out::println);
+        var showAllResponse = showAllTaskService.showAllToDo();
         System.out.println("******************************");
+        System.out.println("Received response: " + showAllResponse);
+        System.out.println("______________________________");
 
         // Create scanner
         var scanner = new Scanner(System.in);
@@ -38,17 +44,20 @@ public class UpdateTaskUIAction implements UIAction {
         // Asking user some data
         System.out.print("Please enter ID of the Task what you are should to update: ");
         var id = Integer.parseInt(scanner.nextLine());
+
+        // Use Service to findByID
+        var entity = findByIdTaskService.findById(id);
         System.out.println("******************************");
         System.out.print("Type new name: ");
         var newName = scanner.nextLine();
         System.out.print("Type new description: ");
         var newDescription = scanner.nextLine();
 
-        // Find a Task by ID
-        var entity = repository.findById(id);
 
         // Use Service to update the Task
-        updateTaskService.updateToDo(entity,newName,newDescription);
+        var response = updateTaskService.updateToDo(entity,newName,newDescription);
+        System.out.println("******************************");
+        System.out.println("Received response: " + response);
     }
 }
 

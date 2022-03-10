@@ -30,8 +30,6 @@ public class ToDoListRepository implements ToDoRepository {
     public ToDoEntity findById(Integer id) {
         for (ToDoEntity value : repository) {
             if (value != null && id.equals(value.getId())) {
-                System.out.println("******************************");
-                System.out.println("Task successfully update!");
                 return value;
             }
         }
