@@ -1,19 +1,16 @@
 package com.petproject.todolist.core;
-
 import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.ShowAllTaskResponse;
 import com.petproject.todolist.dto.TaskDTO;
 import com.petproject.todolist.repository.ToDoListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ShowAllTaskService {
 
+    @Autowired
     private ToDoListRepository repository;
-
-    public ShowAllTaskService(ToDoListRepository repository) {
-        this.repository = repository;
-    }
 
     public ShowAllTaskResponse showAllToDo(){
         var dtos = repository.showAllToDo().stream()

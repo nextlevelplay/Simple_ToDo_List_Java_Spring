@@ -1,23 +1,19 @@
 package com.petproject.todolist.core;
-
 import com.petproject.todolist.core.validation.ValidationService;
 import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import com.petproject.todolist.dto.CreateTaskResponse;
 import com.petproject.todolist.repository.ToDoListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CreateTaskService {
 
-
+    @Autowired
     private ToDoListRepository repository;
+    @Autowired
     private ValidationService validationService;
-
-    public CreateTaskService(ToDoListRepository repository, ValidationService validationService) {
-        this.repository = repository;
-        this.validationService = validationService;
-    }
 
     public CreateTaskResponse createToDo(CreateTaskRequest request) {
         System.out.println("******************************");

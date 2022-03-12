@@ -1,7 +1,7 @@
 package com.petproject.todolist.ui;
-
 import com.petproject.todolist.core.RemoveTaskService;
 import com.petproject.todolist.core.ShowAllTaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -9,13 +9,10 @@ import java.util.Scanner;
 @Component
 public class RemoveTaskUIAction implements UIAction {
 
+    @Autowired
     private RemoveTaskService removeTaskService;
+    @Autowired
     private ShowAllTaskService showAllTaskService;
-
-    public RemoveTaskUIAction(RemoveTaskService removeTaskService, ShowAllTaskService showAllTaskService) {
-        this.removeTaskService = removeTaskService;
-        this.showAllTaskService = showAllTaskService;
-    }
 
     @Override
     public void execute() {

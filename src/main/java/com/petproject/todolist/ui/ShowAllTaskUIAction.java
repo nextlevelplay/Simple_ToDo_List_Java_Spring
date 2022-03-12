@@ -1,16 +1,13 @@
 package com.petproject.todolist.ui;
-
 import com.petproject.todolist.core.ShowAllTaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ShowAllTaskUIAction implements UIAction {
 
+    @Autowired
     private ShowAllTaskService showAllTaskService;
-
-    public ShowAllTaskUIAction(ShowAllTaskService showAllTaskService) {
-        this.showAllTaskService = showAllTaskService;
-    }
 
     @Override
     public void execute() {

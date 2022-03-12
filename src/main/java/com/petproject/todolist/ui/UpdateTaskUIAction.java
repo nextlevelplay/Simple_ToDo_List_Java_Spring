@@ -4,6 +4,7 @@ import com.petproject.todolist.core.FindByIdTaskService;
 import com.petproject.todolist.core.ShowAllTaskService;
 import com.petproject.todolist.core.UpdateTaskService;
 import com.petproject.todolist.dto.UpdateTaskRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -11,16 +12,12 @@ import java.util.Scanner;
 @Component
 public class UpdateTaskUIAction implements UIAction {
 
+    @Autowired
     private ShowAllTaskService showAllTaskService;
+    @Autowired
     private UpdateTaskService updateTaskService;
+    @Autowired
     private FindByIdTaskService findByIdTaskService;
-
-    public UpdateTaskUIAction(ShowAllTaskService showAllTaskService,
-                              UpdateTaskService updateTaskService, FindByIdTaskService findByIdTaskService) {
-        this.showAllTaskService = showAllTaskService;
-        this.updateTaskService = updateTaskService;
-        this.findByIdTaskService = findByIdTaskService;
-    }
 
     @Override
     public void execute() {

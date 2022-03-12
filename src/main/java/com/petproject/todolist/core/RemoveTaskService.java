@@ -1,16 +1,13 @@
 package com.petproject.todolist.core;
-
 import com.petproject.todolist.repository.ToDoListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RemoveTaskService {
 
+    @Autowired
     private ToDoListRepository repository;
-
-    public RemoveTaskService(ToDoListRepository repository) {
-        this.repository = repository;
-    }
 
     public void removeToDo(Integer id){
         var result = repository.removeToDo(id);
