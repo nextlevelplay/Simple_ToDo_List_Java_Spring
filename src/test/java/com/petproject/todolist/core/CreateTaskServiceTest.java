@@ -36,8 +36,8 @@ class CreateTaskServiceTest {
 
         // Request
         var request = new CreateTaskRequest();
-        request.setName("Dota2");
-        request.setDescription("get 6000 mmr");
+        request.setName("Test");
+        request.setDescription("Test_description");
         Mockito.when(validationService.validate(request)).thenReturn(List.of());
         Mockito.when(repository.createToDo(entity(null))).thenReturn(entity(1));
 
@@ -65,8 +65,8 @@ class CreateTaskServiceTest {
 
         // Request
         var request = new CreateTaskRequest();
-        request.setName("Dota2");
-        request.setDescription("get 6000 mmr");
+        request.setName("Test");
+        request.setDescription("Test_description");
         Mockito.when(validationService.validate(request)).thenReturn(List.of(new CoreError("Any error")));
 
         // ActualResult Data
@@ -91,8 +91,8 @@ class CreateTaskServiceTest {
     private ToDoEntity entity(Integer id){
         var entity = new ToDoEntity();
         entity.setId(id);
-        entity.setName("Dota2");
-        entity.setDescription("get 6000 mmr");
+        entity.setName("Test");
+        entity.setDescription("Test_description");
         return entity;
     }
 
