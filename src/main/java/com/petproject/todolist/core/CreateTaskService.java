@@ -4,6 +4,7 @@ import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import com.petproject.todolist.dto.CreateTaskResponse;
 import com.petproject.todolist.repository.ToDoListRepository;
+import com.petproject.todolist.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class CreateTaskService {
 
     @Autowired
-    private ToDoListRepository repository;
+    private ToDoRepository repository;
     @Autowired
     private ValidationService validationService;
 

@@ -12,8 +12,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// UNIT TESTS WITH MOCKITO
-
 class ToDoListRepositoryTest {
 
     @Mock
