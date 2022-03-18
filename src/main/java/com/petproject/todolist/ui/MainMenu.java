@@ -1,44 +1,20 @@
 package com.petproject.todolist.ui;
-
-import com.petproject.todolist.core.*;
-import com.petproject.todolist.core.validation.*;
-import com.petproject.todolist.repository.ToDoListRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 import java.util.Scanner;
 
 @Component
 public class MainMenu implements UIAction {
 
-    // Repository
-    ToDoListRepository repository = new ToDoListRepository();
-
-    // Validation Rules
-    List<ValidationRule> validationRules = List.of(
-            new TaskNameNullValidationRule(),
-            new TaskNameMinLengthValidationRule(),
-            new TaskNameMaxLengthValidationRule(),
-            new TaskDescriptionNullValidationRule(),
-            new TaskDescriptionMinLengthValidationRule(),
-            new TaskDescriptionMaxLengthValidationRule()
-    );
-
-
-    // Service Dependency
-    ValidationService validationService = new ValidationService(validationRules);
-    CreateTaskService createTaskService = new CreateTaskService(repository, validationService);
-    ShowAllTaskService showAllTaskService = new ShowAllTaskService(repository);
-    RemoveTaskService removeTaskService = new RemoveTaskService(repository);
-    UpdateTaskService updateTaskService = new UpdateTaskService(repository);
-    FindByIdTaskService findByIdTaskService = new FindByIdTaskService(repository);
-
     // UI Dependency
-    CreateTaskUIAction createTaskUIAction = new CreateTaskUIAction(createTaskService);
-    ShowAllTaskUIAction showAllTaskUIAction = new ShowAllTaskUIAction(showAllTaskService);
-    RemoveTaskUIAction removeTaskUIAction = new RemoveTaskUIAction(removeTaskService, showAllTaskService);
-    UpdateTaskUIAction updateTaskUIAction = new UpdateTaskUIAction(showAllTaskService,
-            updateTaskService, findByIdTaskService);
+    @Autowired
+    CreateTaskUIAction createTaskUIAction;
+    @Autowired
+    ShowAllTaskUIAction showAllTaskUIAction;
+    @Autowired
+    RemoveTaskUIAction removeTaskUIAction;
+    @Autowired
+    UpdateTaskUIAction updateTaskUIAction;
 
 
     @Override

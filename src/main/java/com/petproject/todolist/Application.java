@@ -1,6 +1,7 @@
 package com.petproject.todolist;
 
 import com.petproject.todolist.config.AppConfig;
+
 import com.petproject.todolist.ui.MainMenu;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

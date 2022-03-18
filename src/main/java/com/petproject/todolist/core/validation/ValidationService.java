@@ -1,18 +1,16 @@
 package com.petproject.todolist.core.validation;
-
 import com.petproject.todolist.dto.CreateTaskRequest;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-@Component
+
+@Service
 public class ValidationService {
 
-    private final List<ValidationRule> validationRules;
-
-    public ValidationService(List<ValidationRule> validationRules) {
-        this.validationRules = validationRules;
-    }
+    @Autowired
+    private List<ValidationRule> validationRules;
 
     public List<CoreError> validate(CreateTaskRequest request) {
         List<CoreError> errors = new ArrayList<>();

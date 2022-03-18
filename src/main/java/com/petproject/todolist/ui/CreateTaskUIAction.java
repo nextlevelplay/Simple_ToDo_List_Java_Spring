@@ -1,7 +1,7 @@
 package com.petproject.todolist.ui;
-
 import com.petproject.todolist.core.CreateTaskService;
 import com.petproject.todolist.dto.CreateTaskRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -9,11 +9,8 @@ import java.util.Scanner;
 @Component
 public class CreateTaskUIAction implements UIAction{
 
+    @Autowired
     private CreateTaskService createTaskService;
-
-    public CreateTaskUIAction(CreateTaskService createTaskService) {
-        this.createTaskService = createTaskService;
-    }
 
     @Override
     public void execute() {
