@@ -28,8 +28,7 @@ public class UpdateTaskUIAction implements UIAction {
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
         var showAllResponse = showAllTaskService.showAllToDo();
-        System.out.println("******************************");
-        System.out.println("Received response: " + showAllResponse);
+        showAllResponse.getTasks().forEach(System.out::println);
         System.out.println("______________________________");
 
         // Create scanner

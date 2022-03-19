@@ -23,8 +23,7 @@ public class RemoveTaskUIAction implements UIAction {
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
         var response = showAllTaskService.showAllToDo();
-        System.out.println("******************************");
-        System.out.println("Received response: " + response);
+        response.getTasks().forEach(System.out::println);
         System.out.println("______________________________");
 
         // Create scanner

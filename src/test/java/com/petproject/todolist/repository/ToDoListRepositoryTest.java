@@ -14,8 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoListRepositoryTest {
 
-    @Mock
-    ToDoRepository repository = Mockito.mock(ToDoListRepository.class);
+    // INTEGRATION TESTS
+
+    ToDoRepository repository = new ToDoListRepository();
 
     // Test createToDo method
     @Test
@@ -23,19 +24,13 @@ class ToDoListRepositoryTest {
 
         // Prepare data:
 
-        //Actual Data
+        //ExpectedResult Data
         var entity = new ToDoEntity();
         entity.setName("Dota2");
         entity.setDescription("get 6000 mmr");
-
-        //ExpectedResult Data
-        var returnEntity = new ToDoEntity();
-        returnEntity.setName("Dota2");
-        returnEntity.setDescription("get 6000 mmr");
-        Mockito.when(repository.createToDo(entity)).thenReturn(returnEntity);
-
-        // Checking
         var expectedResult = entity;
+
+        //Actual Data
         var actualResult = repository.createToDo(entity);
         assertEquals(expectedResult, actualResult);
 
@@ -61,16 +56,22 @@ class ToDoListRepositoryTest {
     void updateToDo() {
 
         // Prepare data
-        ToDoEntity entity = new ToDoEntity();
+        // Create and save entity
+        var entity = new ToDoEntity();
         entity.setName("Dota2");
         entity.setDescription("get 6000 mmr");
         repository.createToDo(entity);
-        String updateName = "WarCraft";
-        String updateDescription = "For the Horde!";
-        ToDoEntity updatedEntity = new ToDoEntity();
-        updatedEntity.setId(1);
+
+        // Create updated entity
+        var updatedEntity = repository.findById(entity.getId());
+        updatedEntity.setId(entity.getId());
         updatedEntity.setName("WarCraft");
         updatedEntity.setDescription("For the Horde!");
+
+        // Update original entity
+        entity.setName(updatedEntity.getName());
+        entity.setDescription(updatedEntity.getDescription());
+
         // Checking
         var expectedResult = updatedEntity;
         var actualResult = repository.updateToDo(entity);
