@@ -2,7 +2,7 @@ docker build:
 docker build -t mysql .
 
 docker run:
-docker run -p 3306:3306 mysql
+docker run --name test_mySQL_database -p 3306:3306 mysql
 
 delete all images:
 docker rmi -f $(docker images -aq)
