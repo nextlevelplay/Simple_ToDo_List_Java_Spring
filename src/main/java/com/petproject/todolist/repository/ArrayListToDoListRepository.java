@@ -1,14 +1,12 @@
 package com.petproject.todolist.repository;
 
 import com.petproject.todolist.domain.ToDoEntity;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 
-public class ToDoListRepository implements ToDoRepository {
+public class ArrayListToDoListRepository implements ToDoRepository {
 
     private final List<ToDoEntity> repository = new ArrayList<>();
     private Integer idSequence = 1;

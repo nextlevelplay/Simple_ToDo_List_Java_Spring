@@ -3,7 +3,6 @@ import com.petproject.todolist.core.validation.ValidationService;
 import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import com.petproject.todolist.dto.CreateTaskResponse;
-import com.petproject.todolist.repository.ToDoListRepository;
 import com.petproject.todolist.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
