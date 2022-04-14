@@ -4,7 +4,7 @@ import com.petproject.todolist.core.validation.ValidationService;
 import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import com.petproject.todolist.dto.CreateTaskResponse;
-import com.petproject.todolist.repository.ToDoListRepository;
+import com.petproject.todolist.repository.ArrayListToDoListRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 class CreateTaskServiceTest {
 
     @Mock
-    private ToDoListRepository repository;
+    private ArrayListToDoListRepository repository;
 
     @Mock
     private ValidationService validationService;

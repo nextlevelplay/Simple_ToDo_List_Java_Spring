@@ -11,8 +11,7 @@ import java.sql.Statement;
 import java.util.List;
 
 
-@Repository
-public class RealDataBase implements ToDoRepository {
+public class JdbcTemplateToDoRepository implements ToDoRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
