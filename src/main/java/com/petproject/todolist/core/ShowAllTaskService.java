@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class ShowAllTaskService {
 
     @Autowired
-    private ToDoRepository repository;
+    private ToDoRepository<ToDoEntity> repository;
 
-    public ShowAllTaskResponse showAllToDo(){
-        var dtos = repository.showAllToDo().stream()
+    public ShowAllTaskResponse showAll(){
+        var dtos = repository.showAll().stream()
                 .map(this::convert)
                 .toList();
         return new ShowAllTaskResponse(dtos);

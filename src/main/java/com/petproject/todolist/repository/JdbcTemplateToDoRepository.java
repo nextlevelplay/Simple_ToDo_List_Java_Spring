@@ -11,13 +11,13 @@ import java.sql.Statement;
 import java.util.List;
 
 
-public class JdbcTemplateToDoRepository implements ToDoRepository {
+public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public ToDoEntity createToDo(ToDoEntity entity) {
+    public ToDoEntity create(ToDoEntity entity) {
         var insertQuery = "INSERT INTO todo(name, description) VALUES (?, ?)";
         var keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
@@ -31,14 +31,14 @@ public class JdbcTemplateToDoRepository implements ToDoRepository {
     }
 
     @Override
-    public List<ToDoEntity> showAllToDo() {
+    public List<ToDoEntity> showAll() {
         var showAllQuery = "SELECT * FROM todo";
         return jdbcTemplate.query(showAllQuery, new BeanPropertyRowMapper<>(ToDoEntity.class));
 
     }
 
     @Override
-    public ToDoEntity updateToDo(ToDoEntity entity) {
+    public ToDoEntity update(ToDoEntity entity) {
         var updatedEntity = findById(entity.getId());
         updatedEntity.setName(entity.getName());
         updatedEntity.setDescription(entity.getDescription());
@@ -48,7 +48,7 @@ public class JdbcTemplateToDoRepository implements ToDoRepository {
     }
 
     @Override
-    public boolean removeToDo(Integer id) {
+    public boolean remove(Integer id) {
         String deleteQuery = "DELETE FROM todo WHERE id=?";
         jdbcTemplate.update(deleteQuery, id);
         return true;

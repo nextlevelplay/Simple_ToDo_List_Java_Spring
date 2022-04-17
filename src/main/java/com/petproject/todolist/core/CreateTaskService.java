@@ -1,6 +1,7 @@
 package com.petproject.todolist.core;
 import com.petproject.todolist.core.validation.ValidationService;
 import com.petproject.todolist.domain.ToDoEntity;
+import com.petproject.todolist.domain.UserEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import com.petproject.todolist.dto.CreateTaskResponse;
 import com.petproject.todolist.repository.ToDoRepository;
@@ -11,7 +12,11 @@ import org.springframework.stereotype.Service;
 public class CreateTaskService {
 
     @Autowired
-    private ToDoRepository repository;
+    private ToDoRepository<ToDoEntity> taskRepository;
+
+    @Autowired
+    private ToDoRepository<UserEntity> userRepository;
+
     @Autowired
     private ValidationService validationService;
 
@@ -26,8 +31,10 @@ public class CreateTaskService {
             response.setErrors(validationResult);
             return response;
         }
+        var user = userRepository.findById(request.getUserId());
         var entity = convert(request);
-        var createdEntity = repository.createToDo(entity);
+        entity.setUserId(user.getId());
+        var createdEntity = taskRepository.create(entity);
         System.out.println("******************************");
         System.out.println("Successfully created " + createdEntity);
         var response = new CreateTaskResponse();

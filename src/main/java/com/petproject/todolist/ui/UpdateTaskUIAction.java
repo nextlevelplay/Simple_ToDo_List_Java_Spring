@@ -27,7 +27,7 @@ public class UpdateTaskUIAction implements UIAction {
 
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
-        var showAllResponse = showAllTaskService.showAllToDo();
+        var showAllResponse = showAllTaskService.showAll();
         showAllResponse.getTasks().forEach(System.out::println);
         System.out.println("______________________________");
 
@@ -46,7 +46,11 @@ public class UpdateTaskUIAction implements UIAction {
         System.out.print("Type new description: ");
         var newDescription = scanner.nextLine();
 
-        var request = new UpdateTaskRequest(id,newName,newDescription);
+        var request = new UpdateTaskRequest();
+        request.setId(entity.getId());
+        request.setName(newName);
+        request.setDescription(newDescription);
+        request.setUserId(entity.getUserId());
         System.out.println("******************************");
         System.out.println("Received request: " + request);
 

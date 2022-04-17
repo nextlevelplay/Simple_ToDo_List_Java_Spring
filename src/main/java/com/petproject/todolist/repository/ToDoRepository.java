@@ -1,15 +1,14 @@
 package com.petproject.todolist.repository;
 
-import com.petproject.todolist.domain.ToDoEntity;
-
 import java.util.List;
+import java.util.Optional;
 
-public interface ToDoRepository {
+public interface ToDoRepository<T> {
 
-    ToDoEntity createToDo(ToDoEntity entity);
-    List<ToDoEntity> showAllToDo();
-    ToDoEntity updateToDo(ToDoEntity entity);
-    boolean removeToDo(Integer id);
-    ToDoEntity findById(Integer id);
+    T create(T entity);
+    List<T> showAll();
+    T update(T entity);
+    boolean remove(Integer id);
+    T findById(Integer id);
 
 }

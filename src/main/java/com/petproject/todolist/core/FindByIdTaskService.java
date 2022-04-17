@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class FindByIdTaskService {
 
     @Autowired
-    private ToDoRepository repository;
+    private ToDoRepository<ToDoEntity> repository;
 
     public ToDoEntity findById(Integer id) {
         var entity = repository.findById(id);

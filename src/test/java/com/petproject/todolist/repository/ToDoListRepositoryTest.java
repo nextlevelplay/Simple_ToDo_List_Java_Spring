@@ -11,7 +11,7 @@ class ToDoListRepositoryTest {
 
     // INTEGRATION TESTS
 
-    ToDoRepository repository = new ArrayListToDoListRepository();
+    ToDoRepository<ToDoEntity> repository = new ArrayListToDoListRepository();
 
     // Test createToDo method
     @Test
@@ -26,7 +26,7 @@ class ToDoListRepositoryTest {
         var expectedResult = entity;
 
         //Actual Data
-        var actualResult = repository.createToDo(entity);
+        var actualResult = repository.create(entity);
         assertEquals(expectedResult, actualResult);
 
     }
@@ -39,10 +39,10 @@ class ToDoListRepositoryTest {
         ToDoEntity entity = new ToDoEntity();
         entity.setName("Dota2");
         entity.setDescription("get 6000 mmr");
-        repository.createToDo(entity);
+        repository.create(entity);
         // Checking
         var expectedResult = List.of(entity);
-        var actualResult = repository.showAllToDo();
+        var actualResult = repository.showAll();
         assertEquals(expectedResult, actualResult);
     }
 
@@ -55,7 +55,7 @@ class ToDoListRepositoryTest {
         var entity = new ToDoEntity();
         entity.setName("Dota2");
         entity.setDescription("get 6000 mmr");
-        repository.createToDo(entity);
+        repository.create(entity);
 
         // Create updated entity
         var updatedEntity = repository.findById(entity.getId());
@@ -69,7 +69,7 @@ class ToDoListRepositoryTest {
 
         // Checking
         var expectedResult = updatedEntity;
-        var actualResult = repository.updateToDo(entity);
+        var actualResult = repository.update(entity);
         assertEquals(expectedResult, actualResult);
     }
 
@@ -81,10 +81,10 @@ class ToDoListRepositoryTest {
         ToDoEntity entity = new ToDoEntity();
         entity.setName("Dota2");
         entity.setDescription("get 6000 mmr");
-        repository.createToDo(entity);
+        repository.create(entity);
         // Checking
         var expectedResult = true;
-        var actualResult = repository.removeToDo(1);
+        var actualResult = repository.remove(1);
         assertEquals(expectedResult, actualResult);
     }
 

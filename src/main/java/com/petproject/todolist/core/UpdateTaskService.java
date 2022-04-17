@@ -10,17 +10,18 @@ import org.springframework.stereotype.Service;
 public class UpdateTaskService {
 
     @Autowired
-    private ToDoRepository repository;
+    private ToDoRepository<ToDoEntity> repository;
 
     public UpdateTaskResponse updateToDo(UpdateTaskRequest request) {
         var entity = convert(request);
-        var updatedEntity = repository.updateToDo(entity);
+        var updatedEntity = repository.update(entity);
         System.out.println("******************************");
         System.out.println("Successfully updated " + updatedEntity);
         var response = new UpdateTaskResponse();
         response.setId(updatedEntity.getId());
         response.setName(updatedEntity.getName());
         response.setDescription(updatedEntity.getDescription());
+        response.setUserId(updatedEntity.getUserId());
         System.out.println("******************************");
         System.out.println("Sending response: " + response);
         return response;
@@ -33,6 +34,7 @@ public class UpdateTaskService {
         entity.setId(request.getId());
         entity.setName(request.getName());
         entity.setDescription(request.getDescription());
+        entity.setUserId(request.getUserId());
         return entity;
     }
 }

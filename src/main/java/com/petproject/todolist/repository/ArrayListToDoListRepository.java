@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ArrayListToDoListRepository implements ToDoRepository {
+public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
 
     private final List<ToDoEntity> repository = new ArrayList<>();
     private Integer idSequence = 1;
@@ -14,7 +14,7 @@ public class ArrayListToDoListRepository implements ToDoRepository {
 
     // Create ToDo
     @Override
-    public ToDoEntity createToDo(ToDoEntity entity) {
+    public ToDoEntity create(ToDoEntity entity) {
         entity.setId(idSequence);
         idSequence++;
         repository.add(entity);
@@ -23,7 +23,7 @@ public class ArrayListToDoListRepository implements ToDoRepository {
 
     // Show all ToDo's
     @Override
-    public List<ToDoEntity> showAllToDo() {
+    public List<ToDoEntity> showAll() {
         return repository;
     }
 
@@ -40,7 +40,7 @@ public class ArrayListToDoListRepository implements ToDoRepository {
 
     // Update ToDo
     @Override
-    public ToDoEntity updateToDo(ToDoEntity entity) {
+    public ToDoEntity update(ToDoEntity entity) {
         var updatedEntity = findById(entity.getId());
         for (ToDoEntity value : repository) {
             if (value != null && updatedEntity.getId().equals(value.getId())) {
@@ -53,7 +53,7 @@ public class ArrayListToDoListRepository implements ToDoRepository {
 
     // Remove ToDo
     @Override
-    public boolean removeToDo(Integer id) {
+    public boolean remove(Integer id) {
         return repository.removeIf(entity -> entity.getId().equals(id));
     }
 

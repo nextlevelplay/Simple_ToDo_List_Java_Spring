@@ -20,7 +20,7 @@ public class ShowAllTaskUIAction implements UIAction {
 
         // Print data
         System.out.println("All Tasks what we have at this moment: ");
-        var response = showAllTaskService.showAllToDo();
+        var response = showAllTaskService.showAll();
         response.getTasks().forEach(System.out::println);
         System.out.println("______________________________");
 

@@ -43,10 +43,10 @@ class ShowAllTaskServiceTest {
         List<TaskDTO> tasks = List.of(dto);
         var expectedResult = new ShowAllTaskResponse(tasks);
 
-        Mockito.when(repository.showAllToDo()).thenReturn(List.of(entity));
+        Mockito.when(repository.showAll()).thenReturn(List.of(entity));
 
         // ActualResult data
-        var actualResult = showAllTaskService.showAllToDo();
+        var actualResult = showAllTaskService.showAll();
 
         assertEquals(expectedResult,actualResult);
 

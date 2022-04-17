@@ -8,6 +8,8 @@ public class MainMenu implements UIAction {
 
     // UI Dependency
     @Autowired
+    CreateUserUIAction createUserUIAction;
+    @Autowired
     CreateTaskUIAction createTaskUIAction;
     @Autowired
     ShowAllTaskUIAction showAllTaskUIAction;
@@ -39,10 +41,11 @@ public class MainMenu implements UIAction {
                 System.out.println("\033[H\033[2J");
                 System.out.flush();
 
-                System.out.println("1) Create Task.");
-                System.out.println("2) Update Task.");
-                System.out.println("3) Show all Tasks.");
-                System.out.println("4) Remove the Task.");
+                System.out.println("1) Create User.");
+                System.out.println("2) Create Task.");
+                System.out.println("3) Update Task.");
+                System.out.println("4) Show all Tasks.");
+                System.out.println("5) Remove the Task.");
                 System.out.println("0) Exit.");
                 System.out.print("Please make a choice: ");
 
@@ -65,15 +68,18 @@ public class MainMenu implements UIAction {
         if (selector != 0) {
             switch (selector) {
                 case 1:
-                    createTaskUIAction.execute();
+                    createUserUIAction.execute();
                     break;
                 case 2:
-                    updateTaskUIAction.execute();
+                    createTaskUIAction.execute();
                     break;
                 case 3:
-                    showAllTaskUIAction.execute();
+                    updateTaskUIAction.execute();
                     break;
                 case 4:
+                    showAllTaskUIAction.execute();
+                    break;
+                case 5:
                     removeTaskUIAction.execute();
                     break;
             }

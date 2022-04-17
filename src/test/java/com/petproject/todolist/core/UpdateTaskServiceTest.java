@@ -50,7 +50,7 @@ class UpdateTaskServiceTest {
         response.setName("John_Snow");
         response.setDescription("How_protect_the_wall?");
 
-        Mockito.when(repository.updateToDo(entity)).thenReturn(updatedEntity);
+        Mockito.when(repository.update(entity)).thenReturn(updatedEntity);
 
         var actualResult = updateTaskService.updateToDo(request);
 

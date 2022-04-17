@@ -1,16 +1,18 @@
 package com.petproject.todolist.ui;
-import com.petproject.todolist.core.CreateTaskService;
+
+import com.petproject.todolist.core.UserService;
 import com.petproject.todolist.dto.CreateTaskRequest;
+import com.petproject.todolist.dto.CreateUserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 @Component
-public class CreateTaskUIAction implements UIAction{
+public class CreateUserUIAction implements UIAction{
 
     @Autowired
-    private CreateTaskService createTaskService;
+    private UserService userService;
 
     @Override
     public void execute() {
@@ -20,19 +22,15 @@ public class CreateTaskUIAction implements UIAction{
 
         // Create scanner
         var scanner = new Scanner(System.in);
-        var request = new CreateTaskRequest();
+        var request = new CreateUserRequest();
 
         // Asking user some data
         System.out.println("******************************");
-        System.out.print("Please enter name of Task: ");
-        request.setName(scanner.nextLine());
-        System.out.print("Please enter description: ");
-        request.setDescription(scanner.nextLine());
-        System.out.print("Please enter user id: ");
-        request.setUserId(Integer.parseInt(scanner.nextLine()));
+        System.out.print("Please enter user name: ");
+        request.setUserName(scanner.nextLine());
 
         // Use Service to create Task
-        var response = createTaskService.createToDo(request);
+        var response = userService.createUser(request);
         System.out.println("******************************");
         System.out.println("Received response: " + response);
     }

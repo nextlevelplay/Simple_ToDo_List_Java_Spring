@@ -1,36 +1,34 @@
 package com.petproject.todolist.repository;
 
-import com.petproject.todolist.domain.ToDoEntity;
+import com.petproject.todolist.domain.UserEntity;
 import lombok.AllArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 @Transactional
 @AllArgsConstructor
-public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
+public class HibernateUserRepository implements ToDoRepository<UserEntity> {
 
     @Autowired
-    private final SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     @Override
-    public ToDoEntity create(ToDoEntity entity) {
+    public UserEntity create(UserEntity entity) {
         sessionFactory.getCurrentSession().save(entity);
         return entity;
     }
 
     @Override
-    public List<ToDoEntity> showAll() {
-//        return sessionFactory.getCurrentSession().createCriteria(ToDoEntity.class).list();
-        return sessionFactory.getCurrentSession().createQuery("SELECT t FROM todo t").getResultList();
+    public List<UserEntity> showAll() {
+        return sessionFactory.getCurrentSession().createQuery("SELECT u FROM users u").getResultList();
     }
 
     @Override
-    public ToDoEntity update(ToDoEntity entity) {
+    public UserEntity update(UserEntity entity) {
         sessionFactory.getCurrentSession().update(entity);
         return entity;
     }
@@ -38,7 +36,7 @@ public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
     @Override
     public boolean remove(Integer id) {
         var session = sessionFactory.getCurrentSession();
-        var entity = session.load(ToDoEntity.class, id);
+        var entity = session.load(UserEntity.class, id);
         try {
             session.delete(entity);
             return true;
@@ -48,8 +46,7 @@ public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
     }
 
     @Override
-    public ToDoEntity findById(Integer id) {
-        return sessionFactory.getCurrentSession().get(ToDoEntity.class, id);
-
+    public UserEntity findById(Integer id) {
+        return sessionFactory.getCurrentSession().get(UserEntity.class, id);
     }
 }

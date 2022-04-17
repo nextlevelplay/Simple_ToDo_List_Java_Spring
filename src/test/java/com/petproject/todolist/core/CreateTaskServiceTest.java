@@ -39,13 +39,13 @@ class CreateTaskServiceTest {
         request.setName("Test");
         request.setDescription("Test_description");
         Mockito.when(validationService.validate(request)).thenReturn(List.of());
-        Mockito.when(repository.createToDo(entity(null))).thenReturn(entity(1));
+        Mockito.when(repository.create(entity(null))).thenReturn(entity(1));
 
         // ActualResult Data
         var actualResult = victim.createToDo(request);
 
         // Checking touch the repo and services
-        Mockito.verify(repository).createToDo(any());
+        Mockito.verify(repository).create(any());
         Mockito.verify(validationService).validate(any());
 
         // ExpectedResult Data

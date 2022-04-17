@@ -5,31 +5,24 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "todo")
-@Table(name = "todo")
-public class ToDoEntity {
+@Entity(name = "users")
+@Table(name = "users")
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "username", length = 100)
+    private String userName;
 
-    @Column(name = "description")
-    private String description;
-
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    private UserEntity userEntity;
-
-    @Column(name = "user_id")
+    @OneToMany
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Integer userId;
-
+    private List<ToDoEntity> toDoEntities;
 }
