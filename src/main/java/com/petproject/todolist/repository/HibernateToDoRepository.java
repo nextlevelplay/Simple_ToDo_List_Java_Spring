@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Transactional
@@ -47,8 +48,9 @@ public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
     }
 
     @Override
-    public ToDoEntity findById(Integer id) {
-        return sessionFactory.openSession().get(ToDoEntity.class, id);
+    public Optional<ToDoEntity> findById(Integer id) {
+        var entity = sessionFactory.openSession().get(ToDoEntity.class, id);
+        return Optional.ofNullable(entity);
 
     }
 }

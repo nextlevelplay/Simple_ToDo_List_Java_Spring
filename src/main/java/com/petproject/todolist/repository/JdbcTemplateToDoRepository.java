@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.stereotype.Repository;
 
 import java.sql.Statement;
 import java.util.List;
+import java.util.Optional;
 
 
 public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
@@ -39,12 +39,7 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
 
     @Override
     public ToDoEntity update(ToDoEntity entity) {
-        var updatedEntity = findById(entity.getId());
-        updatedEntity.setName(entity.getName());
-        updatedEntity.setDescription(entity.getDescription());
-        var updateQuery = "UPDATE todo SET name = ?, description = ? WHERE id = ?";
-        jdbcTemplate.update(updateQuery, updatedEntity.getName(), updatedEntity.getDescription(),entity.getId());
-        return updatedEntity;
+        return null;
     }
 
     @Override
@@ -55,8 +50,7 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
     }
 
     @Override
-    public ToDoEntity findById(Integer id) {
-        var result = jdbcTemplate.queryForObject("SELECT * FROM todo WHERE id=?", new BeanPropertyRowMapper<>(ToDoEntity.class), new Object[]{id});
-        return result;
+    public Optional<ToDoEntity> findById(Integer id) {
+        return null;
     }
 }

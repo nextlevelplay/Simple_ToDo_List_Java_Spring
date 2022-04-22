@@ -31,9 +31,8 @@ public class CreateTaskService {
             response.setErrors(validationResult);
             return response;
         }
-        var user = userRepository.findById(request.getUserId());
         var entity = convert(request);
-        entity.setUserId(user.getId());
+        entity.setUserId(request.getUserId());
         var createdEntity = taskRepository.create(entity);
         System.out.println("******************************");
         System.out.println("Successfully created " + createdEntity);

@@ -9,6 +9,6 @@ public interface ToDoRepository<T> {
     List<T> showAll();
     T update(T entity);
     boolean remove(Integer id);
-    T findById(Integer id);
+    Optional<T> findById(Integer id);
 
 }
