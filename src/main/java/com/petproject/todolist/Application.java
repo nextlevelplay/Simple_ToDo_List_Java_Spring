@@ -1,16 +1,15 @@
 package com.petproject.todolist;
 
-import com.petproject.todolist.config.AppConfig;
 
-import com.petproject.todolist.ui.MainMenu;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
-        var context = new AnnotationConfigApplicationContext(AppConfig.class);
-        var menu = context.getBean(MainMenu.class);
-        menu.execute();
+        SpringApplication.run(Application.class);
+
     }
 }
 
