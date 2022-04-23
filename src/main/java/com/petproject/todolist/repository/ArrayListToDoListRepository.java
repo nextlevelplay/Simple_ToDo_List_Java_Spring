@@ -4,6 +4,7 @@ import com.petproject.todolist.domain.ToDoEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
@@ -28,12 +29,7 @@ public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
     }
 
     @Override
-    public ToDoEntity findById(Integer id) {
-        for (ToDoEntity value : repository) {
-            if (value != null && id.equals(value.getId())) {
-                return value;
-            }
-        }
+    public Optional<ToDoEntity> findById(Integer id) {
         return null;
     }
 
@@ -41,14 +37,7 @@ public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
     // Update ToDo
     @Override
     public ToDoEntity update(ToDoEntity entity) {
-        var updatedEntity = findById(entity.getId());
-        for (ToDoEntity value : repository) {
-            if (value != null && updatedEntity.getId().equals(value.getId())) {
-                updatedEntity.setName(entity.getName());
-                updatedEntity.setDescription(entity.getDescription());
-            }
-        }
-        return entity;
+        return null;
     }
 
     // Remove ToDo
