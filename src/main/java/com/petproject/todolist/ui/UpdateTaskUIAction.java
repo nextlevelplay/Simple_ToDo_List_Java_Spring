@@ -47,10 +47,10 @@ public class UpdateTaskUIAction implements UIAction {
         var newDescription = scanner.nextLine();
 
         var request = new UpdateTaskRequest();
-        request.setId(entity.getId());
+        request.setId(entity.getTask().getId());
         request.setName(newName);
         request.setDescription(newDescription);
-        request.setUserId(entity.getUserId());
+        request.setUserId(entity.getTask().getUserId());
         System.out.println("******************************");
         System.out.println("Received request: " + request);
 

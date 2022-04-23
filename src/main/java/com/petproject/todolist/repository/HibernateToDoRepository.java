@@ -1,7 +1,9 @@
 package com.petproject.todolist.repository;
 
 import com.petproject.todolist.domain.ToDoEntity;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
@@ -30,16 +32,21 @@ public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
 
     @Override
     public ToDoEntity update(ToDoEntity entity) {
-        sessionFactory.openSession().update(entity);
+        var session = sessionFactory.openSession();
+        var transaction = session.beginTransaction();
+        session.update(entity);
+        transaction.commit();
         return entity;
     }
 
     @Override
     public boolean remove(Integer id) {
         var session = sessionFactory.openSession();
+        var transaction = session.beginTransaction();
         var entity = session.load(ToDoEntity.class, id);
         try {
             session.delete(entity);
+            transaction.commit();
             return true;
         } catch (Exception e) {
             return false;

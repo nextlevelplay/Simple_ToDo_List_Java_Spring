@@ -21,6 +21,6 @@ public class ShowAllTaskService {
     }
 
     private TaskDTO convert(ToDoEntity entity){
-        return new TaskDTO(entity.getId(),entity.getName(),entity.getDescription());
+        return new TaskDTO(entity.getId(),entity.getName(),entity.getDescription(),entity.getUserId());
     }
 }
