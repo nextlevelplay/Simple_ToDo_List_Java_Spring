@@ -1,20 +1,17 @@
 package com.petproject.todolist.repository;
 
 import com.petproject.todolist.domain.ToDoEntity;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
 @Transactional
-public class HibernateToDoRepository implements ToDoRepository<ToDoEntity>{
-
-
+public class HibernateToDoRepository implements ToDoRepository<ToDoEntity> {
 
     @Autowired
     private SessionFactory sessionFactory;

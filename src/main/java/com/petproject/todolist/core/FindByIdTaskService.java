@@ -6,6 +6,8 @@ import com.petproject.todolist.repository.ToDoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class FindByIdTaskService {
 
@@ -13,9 +15,10 @@ public class FindByIdTaskService {
     private ToDoRepository<ToDoEntity> repository;
 
     public FindByIdTaskResponse findById(Integer id) {
-        var entity = repository.findById(id);
-        return new FindByIdTaskResponse(convert(entity));
-
+        return repository.findById(id)
+                .map(this::convert)
+                .map(FindByIdTaskResponse::new)
+                .orElseThrow(() -> new IllegalArgumentException("ToDo with id " + id + " is not found."));
 
     }
 
