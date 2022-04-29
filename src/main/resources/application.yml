@@ -1,7 +1,10 @@
 spring:
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
     hibernate:
       dll-auto: validate
+      package-scan: com.petproject
   datasource:
     password: root
     username: root

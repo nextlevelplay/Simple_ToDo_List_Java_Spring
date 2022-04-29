@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/putExample")
+@RequestMapping("/api/tasks")
 @AllArgsConstructor
 public class TaskController {
 
