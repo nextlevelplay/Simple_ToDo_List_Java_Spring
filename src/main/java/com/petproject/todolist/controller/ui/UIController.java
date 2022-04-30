@@ -1,15 +1,15 @@
 package com.petproject.todolist.controller.ui;
 
 import com.petproject.todolist.core.CreateTaskService;
+import com.petproject.todolist.core.RemoveTaskService;
 import com.petproject.todolist.core.ShowAllTaskService;
+import com.petproject.todolist.domain.ToDoEntity;
 import com.petproject.todolist.dto.CreateTaskRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @AllArgsConstructor
@@ -19,6 +19,8 @@ public class UIController {
     private ShowAllTaskService showAllTaskService;
     @Autowired
     private CreateTaskService createTaskService;
+    @Autowired
+    private RemoveTaskService removeTaskService;
 
 
     @GetMapping("/")
@@ -50,5 +52,10 @@ public class UIController {
         return "redirect:/allTasks";
     }
 
+    @GetMapping("/delete")
+    public String deleteTask(@RequestParam Integer id) {
+        removeTaskService.removeToDo(id);
+        return "redirect:/allTasks";
+    }
 
 }

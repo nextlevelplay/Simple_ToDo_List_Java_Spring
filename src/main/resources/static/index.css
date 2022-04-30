@@ -11,6 +11,17 @@ body {
     min-height: 100vh;
 }
 
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
 header{
     font-size: 1.5rem;
 }
@@ -29,6 +40,7 @@ form input, form button {
     border:none;
     background: white;
 }
+
 
 form button {
     color: #d88771;
@@ -73,7 +85,7 @@ form button:hover {
 .trash-btn, .complete-btn {
 
     outline: none;
-    background: #ff6f47;
+    background: none;
     color: white;
     border: none;
     padding: 0.5rem;
@@ -83,8 +95,8 @@ form button:hover {
 }
 
 .trash-btn:hover {
-    background: red;
-    color: white;
+    background: none;
+    color: rgba(226, 26, 26, 0.856);
     transition: all 0.3s ease;
 }
 
@@ -115,4 +127,78 @@ form button:hover {
 .fall {
     transform: translateY(4rem) rotateZ(20deg);
     opacity: 0;
+}
+
+.btn {
+	border: none;
+	font-family: 'Lato';
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 25px 80px;
+	display: inline-block;
+	margin: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.btn:before {
+	font-family: 'FontAwesome';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+.btn-sep {
+	padding: 25px 60px 25px 120px;
+}
+
+.btn-sep:before {
+	background: rgba(0,0,0,0.15);
+}
+
+.btn-2 {
+	background: #2ecc71;
+	color: #fff;
+}
+
+.btn-2:hover {
+	background: #27ae60;
+}
+
+.btn-2:active {
+	background: #27ae60;
+	top: 2px;
+}
+
+.btn-2:before {
+	position: absolute;
+	height: 100%;
+	left: 0;
+	top: 0;
+	line-height: 3;
+	font-size: 140%;
+	width: 60px;
 }

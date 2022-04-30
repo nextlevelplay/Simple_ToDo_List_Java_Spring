@@ -2,17 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Create Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./index.css" />
 
+    <title>Create Task</title>
 </head>
 <body>
-<div align="center"></div>
-<h1> Form </h1>
+<header>
+    Create new Task:
+</header>
 <form action="#" th:action="@{/createTask}" th:object="${task}" method="post">
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Description: <input type="text" th:field="*{description}" /></p>
-    <p>User ID: <input type="text" th:field="*{userId}" /></p>
-    <p><input type="submit" value="Submit" /><input type="reset" value="Reset"></p>
+    <p>
+        <br><input type="text" placeholder="Name:" th:field="*{name}" /></br>
+        <br><input type="text" placeholder="Description:" th:field="*{description}" /></br>
+        <br><input type="text" placeholder="User ID:" th:field="*{userId}" /></br>
+        <br>
+        <button type="submit" class="complete-btn" value="Submit">CREATE</button>
+        </br>
+        <br>
+    </p>
 </form>
 </body>
 </html>
