@@ -39,7 +39,12 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
 
     @Override
     public ToDoEntity update(ToDoEntity entity) {
-        return null;
+        var updatedEntity = findById(entity.getId()).orElseThrow();
+        updatedEntity.setName(entity.getName());
+        updatedEntity.setDescription(entity.getDescription());
+        var updateQuery = "UPDATE todo SET name = ?, description = ? WHERE id = ?";
+        jdbcTemplate.update(updateQuery, updatedEntity.getName(), updatedEntity.getDescription(),entity.getId());
+        return updatedEntity;
     }
 
     @Override
