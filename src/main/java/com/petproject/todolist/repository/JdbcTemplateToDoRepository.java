@@ -56,6 +56,7 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
 
     @Override
     public Optional<ToDoEntity> findById(Integer id) {
-        return null;
+        var result = jdbcTemplate.queryForObject("SELECT * FROM todo WHERE id=?", new BeanPropertyRowMapper<>(ToDoEntity.class), new Object[]{id});
+        return Optional.ofNullable(result);
     }
 }
