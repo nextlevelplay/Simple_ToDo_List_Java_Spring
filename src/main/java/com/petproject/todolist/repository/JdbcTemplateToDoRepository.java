@@ -43,7 +43,7 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
         updatedEntity.setName(entity.getName());
         updatedEntity.setDescription(entity.getDescription());
         var updateQuery = "UPDATE todo SET name = ?, description = ? WHERE id = ?";
-        jdbcTemplate.update(updateQuery, updatedEntity.getName(), updatedEntity.getDescription(),entity.getId());
+        jdbcTemplate.update(updateQuery, updatedEntity.getName(), updatedEntity.getDescription(), entity.getId());
         return updatedEntity;
     }
 
@@ -59,4 +59,5 @@ public class JdbcTemplateToDoRepository implements ToDoRepository<ToDoEntity> {
         var result = jdbcTemplate.queryForObject("SELECT * FROM todo WHERE id=?", new BeanPropertyRowMapper<>(ToDoEntity.class), new Object[]{id});
         return Optional.ofNullable(result);
     }
+
 }
