@@ -3,7 +3,9 @@ package com.petproject.todolist.repository;
 import com.petproject.todolist.domain.ToDoEntity;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +13,7 @@ class ToDoListRepositoryTest {
 
     // INTEGRATION TESTS
 
-    ToDoRepository<ToDoEntity> repository = new ArrayListToDoListRepository();
+    private final ToDoRepository<ToDoEntity> repository = new ArrayListToDoListRepository();
 
     // Test createToDo method
     @Test
@@ -58,7 +60,7 @@ class ToDoListRepositoryTest {
         repository.create(entity);
 
         // Create updated entity
-        var updatedEntity = repository.findById(entity.getId());
+        var updatedEntity = repository.findById(entity.getId()).orElseThrow();
         updatedEntity.setId(entity.getId());
         updatedEntity.setName("WarCraft");
         updatedEntity.setDescription("For the Horde!");

@@ -9,6 +9,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,10 +31,18 @@ class FindByIdTaskServiceTest {
         entity.setName("Test");
         entity.setDescription("Test description");
 
-        Mockito.when(repository.findById(1)).thenReturn(entity);
+        Mockito.when(repository.findById(1)).thenReturn(Optional.of(entity));
+
+        //Received data
+        var receivedData = findByIdTaskService.findById(1);
 
         // ActualResult Data
-        var actualResult = findByIdTaskService.findById(1);
+        var actualResult = new ToDoEntity();
+        actualResult.setId(receivedData.getTask().getId());
+        actualResult.setName(receivedData.getTask().getName());
+        actualResult.setDescription(receivedData.getTask().getDescription());
+        actualResult.setUserId(receivedData.getTask().getUserId());
+
 
         // ExpectedResult Data
         var expectedResult = entity;

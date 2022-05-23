@@ -30,6 +30,11 @@ public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
 
     @Override
     public Optional<ToDoEntity> findById(Integer id) {
+        for (ToDoEntity value : repository) {
+            if (value != null && id.equals(value.getId())) {
+                return Optional.of(value);
+            }
+        }
         return null;
     }
 
@@ -37,7 +42,14 @@ public class ArrayListToDoListRepository implements ToDoRepository<ToDoEntity> {
     // Update ToDo
     @Override
     public ToDoEntity update(ToDoEntity entity) {
-        return null;
+        var updatedEntity = findById(entity.getId()).orElseThrow();
+        for (ToDoEntity value : repository) {
+            if (value != null && updatedEntity.getId().equals(value.getId())) {
+                updatedEntity.setName(entity.getName());
+                updatedEntity.setDescription(entity.getDescription());
+            }
+        }
+        return entity;
     }
 
     // Remove ToDo
